@@ -44,4 +44,4 @@ TODO
 
 ## Acknowledgements
 
-`geojson-rewind` is a python port of Mapbox's javascript [`geojson-rewind](https://github.com/mapbox/geojson-rewind) package. Credit to [Tom MacWright](https://github.com/tmcw) and [contributors](https://github.com/mapbox/geojson-rewind/graphs/contributors).
+`geojson-rewind` is a python port of Mapbox's javascript [geojson-rewind](https://github.com/mapbox/geojson-rewind) package. Credit to [Tom MacWright](https://github.com/tmcw) and [contributors](https://github.com/mapbox/geojson-rewind/graphs/contributors).
