@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/chris48s/geojson-rewind.svg?branch=master)](https://travis-ci.org/chris48s/geojson-rewind)
 [![Coverage Status](https://coveralls.io/repos/github/chris48s/geojson-rewind/badge.svg?branch=master)](https://coveralls.io/github/chris48s/geojson-rewind?branch=master)
+![PyPI Version](https://img.shields.io/pypi/v/geojson-rewind.svg)
+![License](https://img.shields.io/pypi/l/geojson-rewind.svg)
+![Python Support](https://img.shields.io/pypi/pyversions/geojson-rewind.svg)
 
 A Python library for enforcing polygon ring winding order in GeoJSON
 
@@ -13,7 +16,9 @@ This helps you generate compliant Polygon and MultiPolygon geometries.
 
 ## Installation
 
-TODO
+```
+pip install geojson-rewind
+```
 
 ## Usage
 
