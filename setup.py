@@ -11,7 +11,7 @@ def _get_description():
 
 setup(
     name='geojson-rewind',
-    version='0.1.0',
+    version='0.1.1',
     author="chris48s",
     license="MIT",
     description='A Python library for enforcing polygon ring winding order in GeoJSON',
@@ -31,5 +31,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
 )
