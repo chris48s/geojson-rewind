@@ -7,9 +7,5 @@ build/
 dist/
 geojson_rewind.egg-info/
 
-# pipenv
-Pipfile
-Pipfile.lock
-
 # test coverage
 .coverage
