@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/chris48s/geojson-rewind/badge.svg?branch=master)](https://coveralls.io/github/chris48s/geojson-rewind?branch=master)
 ![PyPI Version](https://img.shields.io/pypi/v/geojson-rewind.svg)
 ![License](https://img.shields.io/pypi/l/geojson-rewind.svg)
-![Python Support](https://img.shields.io/pypi/pyversions/geojson-rewind.svg)
+![Python Compatibility](https://img.shields.io/badge/dynamic/json?query=info.requires_python&label=python&url=https%3A%2F%2Fpypi.org%2Fpypi%2Fgeojson-rewind%2Fjson)
 
 A Python library for enforcing polygon ring winding order in GeoJSON
 
