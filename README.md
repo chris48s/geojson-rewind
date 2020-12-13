@@ -1,7 +1,7 @@
 # geojson-rewind
 
-[![Build Status](https://travis-ci.org/chris48s/geojson-rewind.svg?branch=master)](https://travis-ci.org/chris48s/geojson-rewind)
-[![Coverage Status](https://coveralls.io/repos/github/chris48s/geojson-rewind/badge.svg?branch=master)](https://coveralls.io/github/chris48s/geojson-rewind?branch=master)
+![Run tests](https://github.com/chris48s/geojson-rewind/workflows/Run%20tests/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/chris48s/geojson-rewind/branch/master/graph/badge.svg?token=0WGM3W8ULH)](https://codecov.io/gh/chris48s/geojson-rewind)
 ![PyPI Version](https://img.shields.io/pypi/v/geojson-rewind.svg)
 ![License](https://img.shields.io/pypi/l/geojson-rewind.svg)
 ![Python Compatibility](https://img.shields.io/badge/dynamic/json?query=info.requires_python&label=python&url=https%3A%2F%2Fpypi.org%2Fpypi%2Fgeojson-rewind%2Fjson)

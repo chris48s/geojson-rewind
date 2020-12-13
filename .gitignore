@@ -9,3 +9,4 @@ geojson_rewind.egg-info/
 
 # test coverage
 .coverage
+coverage.xml
