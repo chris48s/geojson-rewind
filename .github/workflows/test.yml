@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8, 3.9]
+        python-version: [3.6, 3.7, 3.8, 3.9]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
           poetry run coverage xml
 
       - name: Ensure package builds
-        run: if [[ "$(echo '${{ matrix.python-version }}' | cut -d'.' -f2)" -ge '6' ]]; then poetry build; fi
+        run: poetry build
 
       - name: Upload coverage report to codecov
         uses: codecov/codecov-action@v1

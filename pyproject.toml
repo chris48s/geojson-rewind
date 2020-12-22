@@ -9,7 +9,7 @@ repository = "https://github.com/chris48s/geojson-rewind"
 homepage = "https://github.com/chris48s/geojson-rewind"
 
 [tool.poetry.dependencies]
-python = "^3.5"
+python = "^3.6"
 
 [tool.poetry.dev-dependencies]
 coverage = "^5.3"
