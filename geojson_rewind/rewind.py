@@ -1,6 +1,9 @@
+import argparse
 import copy
 import json
 import math
+import sys
+
 
 RADIUS = 6378137
 
@@ -80,3 +83,28 @@ def ringArea(coords):
 
 def rad(coord):
     return coord * math.pi / 180
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Enforce RFC 7946 ring winding order on a GeoJSON file'
+    )
+    parser.add_argument(
+        'file',
+        nargs='?',
+        help='Input file, if empty stdin is used',
+        type=argparse.FileType('r'),
+        default=sys.stdin,
+    )
+    args = parser.parse_args()
+
+    if args.file.isatty():
+        parser.print_help()
+        return 0
+
+    sys.stdout.write(rewind(args.file.read()))
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

@@ -1,7 +1,11 @@
+import io
 import json
 import os
 import unittest
+from contextlib import redirect_stdout
+from unittest.mock import patch
 from geojson_rewind import rewind
+from geojson_rewind.rewind import main
 
 
 class RewindTests(unittest.TestCase):
@@ -79,3 +83,19 @@ class RewindTests(unittest.TestCase):
         _input = json.load(open(infile))
         output = rewind(_input)
         self.assertNotEqual(_input, output)
+
+    def test_cli(self):
+        _input = open(self.get_fixture_path('collection.input.geojson')).read()
+        with patch('sys.stdin', io.StringIO(_input)):
+            with io.StringIO() as buf, redirect_stdout(buf):
+                self.assertEqual(0, main())
+                self.assertEqual(buf.getvalue().strip(), rewind(_input))
+
+    def test_cli_stdin_is_tty(self):
+        with patch('sys.stdin.isatty', return_value=True):
+            with io.StringIO() as buf, redirect_stdout(buf):
+                self.assertEqual(0, main())
+                self.assertIn(
+                    'Enforce RFC 7946 ring winding order',
+                    buf.getvalue().strip()
+                )
