@@ -16,9 +16,9 @@ class RewindTests(unittest.TestCase):
         basedir = os.path.dirname(os.path.abspath(__file__))
         return os.path.abspath(os.path.join(basedir, 'fixtures/', filename))
 
-    def test_collection(self):
-        infile = self.get_fixture_path('collection.input.geojson')
-        outfile = self.get_fixture_path('collection.output.geojson')
+    def test_feature_collection(self):
+        infile = self.get_fixture_path('featurecollection.input.geojson')
+        outfile = self.get_fixture_path('featurecollection.output.geojson')
         self.assertDictEqual(
             rewind(json.load(open(infile))),
             json.load(open(outfile))
@@ -93,7 +93,7 @@ class RewindTests(unittest.TestCase):
         self.assertNotEqual(_input, output)
 
     def test_cli(self):
-        _input = open(self.get_fixture_path('collection.input.geojson')).read()
+        _input = open(self.get_fixture_path('featurecollection.input.geojson')).read()
         with patch('sys.stdin', io.StringIO(_input)):
             with io.StringIO() as buf, redirect_stdout(buf):
                 self.assertEqual(0, main())
