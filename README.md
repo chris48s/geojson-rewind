@@ -22,7 +22,37 @@ pip install geojson-rewind
 
 ## Usage
 
+### As a Library
+
+Enforce RFC 7946 ring winding order (input/output is a GeoJSON string):
+
 ```py
+>>> from geojson_rewind import rewind
+
+>>> input = """{
+...      "geometry": {   "coordinates": [   [   [100, 0],
+...                                             [100, 1],
+...                                             [101, 1],
+...                                             [101, 0],
+...                                             [100, 0]]],
+...                      "type": "Polygon"},
+...      "properties": {"foo": "bar"},
+...      "type": "Feature"}"""
+
+>>> output = rewind(input)
+
+>>> output
+'{"geometry": {"coordinates": [[[100, 0], [101, 0], [101, 1], [100, 1], [100, 0]]], "type": "Polygon"}, "properties": {"foo": "bar"}, "type": "Feature"}'
+
+>>> type(output)
+<class 'str'>
+```
+
+Enforce RFC 7946 ring winding order (input/output is a python dict):
+
+```py
+>>> from geojson_rewind import rewind
+
 >>> input = {
 ...     'geometry': {   'coordinates': [   [   [100, 0],
 ...                                            [100, 1],
@@ -32,19 +62,24 @@ pip install geojson-rewind
 ...                     'type': 'Polygon'},
 ...     'properties': {'foo': 'bar'},
 ...     'type': 'Feature'}
->>> from geojson_rewind import rewind
+
 >>> output = rewind(input)
->>> import pprint
->>> pp = pprint.PrettyPrinter(indent=4)
->>> pp.pprint(output)
-{   'geometry': {   'coordinates': [   [   [100, 0],
-                                           [101, 0],
-                                           [101, 1],
-                                           [100, 1],
-                                           [100, 0]]],
-                    'type': 'Polygon'},
-    'properties': {'foo': 'bar'},
-    'type': 'Feature'}
+
+>>> output
+{'geometry': {'coordinates': [[[100, 0], [101, 0], [101, 1], [100, 1], [100, 0]]], 'type': 'Polygon'}, 'properties': {'foo': 'bar'}, 'type': 'Feature'}
+
+>>> type(output)
+<class 'dict'>
+```
+
+## On the Console
+
+```sh
+# Enforce ring winding order on a GeoJSON file
+$ rewind in.geojson > out.geojson
+
+# fetch GeoJSON from the web and enforce ring winding order
+$ curl "https://myserver.com/in.geojson" | rewind
 ```
 
 ## Acknowledgements
