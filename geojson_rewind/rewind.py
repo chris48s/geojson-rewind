@@ -20,6 +20,11 @@ def _rewind(gj, rfc7946):
             map(lambda obj: _rewind(obj, rfc7946), gj['features'])
         )
         return gj
+    if gj['type'] == 'GeometryCollection':
+        gj['geometries'] = list(
+            map(lambda obj: _rewind(obj, rfc7946), gj['geometries'])
+        )
+        return gj
     if gj['type'] == 'Feature':
         gj['geometry'] = _rewind(gj['geometry'], rfc7946)
     if gj['type'] in ['Polygon', 'MultiPolygon']:
