@@ -2,7 +2,7 @@ import io
 import json
 import os
 import unittest
-from contextlib import redirect_stdout
+from contextlib import redirect_stdout, redirect_stderr
 from unittest.mock import patch
 from geojson_rewind import rewind
 from geojson_rewind.rewind import main
@@ -91,6 +91,31 @@ class RewindTests(unittest.TestCase):
         _input = json.load(open(infile))
         output = rewind(_input)
         self.assertNotEqual(_input, output)
+
+    def test_unexpected_crs_warning(self):
+        infile = self.get_fixture_path('point-other-crs.input.geojson')
+        _input = json.load(open(infile))
+
+        with io.StringIO() as buf, redirect_stderr(buf):
+            rewind(_input)
+            self.assertIn(
+                'Co-ordinates in the input data are assumed to be WGS84',
+                buf.getvalue()
+            )
+
+    def test_crs84_no_warning(self):
+        infile = self.get_fixture_path('point-crs84.input.geojson')
+        _input = json.load(open(infile))
+        with io.StringIO() as buf, redirect_stderr(buf):
+            rewind(_input)
+            self.assertEqual('', buf.getvalue())
+
+    def test_no_crs_no_warning(self):
+        infile = self.get_fixture_path('point-no-crs.input.geojson')
+        _input = json.load(open(infile))
+        with io.StringIO() as buf, redirect_stderr(buf):
+            rewind(_input)
+            self.assertEqual('', buf.getvalue())
 
     def test_cli(self):
         _input = open(self.get_fixture_path('featurecollection.input.geojson')).read()

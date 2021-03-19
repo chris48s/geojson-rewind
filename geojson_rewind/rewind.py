@@ -1,6 +1,7 @@
 import argparse
 import copy
 import json
+import logging
 import math
 import sys
 
@@ -9,10 +10,24 @@ RADIUS = 6378137
 
 def rewind(geojson, rfc7946=True):
     gj = copy.deepcopy(geojson)
+    _check_crs(geojson)
     if isinstance(gj, str):
         return json.dumps(_rewind(json.loads(gj), rfc7946))
     else:
         return _rewind(gj, rfc7946)
+
+def _check_crs(geojson):
+    if (
+        'crs' in geojson
+        and 'properties' in geojson['crs']
+        and 'name' in geojson['crs']['properties']
+        and geojson['crs']['properties']['name'] != 'urn:ogc:def:crs:OGC:1.3:CRS84'
+    ):
+        logging.warning(
+            'Co-ordinates in the input data are assumed to be WGS84 with '
+            '(lon, lat) ordering, as per RFC 7946. Input with co-ordinates '
+            'using any other CRS may lead to unexpected results.'
+        )
 
 def _rewind(gj, rfc7946):
     if gj['type'] == 'FeatureCollection':

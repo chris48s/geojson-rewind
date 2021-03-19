@@ -1,0 +1,16 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      125.6,
+      10.1
+    ]
+  },
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "not CRS84"
+    }
+  }
+}

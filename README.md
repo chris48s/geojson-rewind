@@ -14,6 +14,8 @@ The [GeoJSON](https://tools.ietf.org/html/rfc7946) spec mandates the [right hand
 
 This helps you generate compliant Polygon and MultiPolygon geometries.
 
+Note: Co-ordinates in the input data are assumed to be WGS84 with (lon, lat) ordering, [as per RFC 7946](https://tools.ietf.org/html/rfc7946#section-3.1.1). Input with co-ordinates using any other CRS may lead to unexpected results.
+
 ## Installation
 
 ```
