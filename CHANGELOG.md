@@ -1,5 +1,9 @@
 # Changelog
 
+## 📦 [1.0.2](https://pypi.org/project/geojson-rewind/1.0.2/) - 2021-10-17
+
+* Test on python 3.10
+
 ## 📦 [1.0.1](https://pypi.org/project/geojson-rewind/1.0.1/) - 2021-03-19
 
 * Log a warning if an unexpected CRS is detected
