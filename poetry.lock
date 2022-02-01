@@ -196,7 +196,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "e7ff439dc1fffcd7ea83c2dc422ba8c227f1706f02aff339dbe4e36944d91a79"
+content-hash = "f6f2d359e2384f59f8c6ab637ee13925f949abc80bf0cc7ec6eda2caf44d9af2"
 
 [metadata.files]
 black = [
