@@ -1,5 +1,9 @@
 # Changelog
 
+## 📦 [1.0.3](https://pypi.org/project/geojson-rewind/1.0.3/) - 2022-05-15
+
+* Performance improvements
+
 ## 📦 [1.0.2](https://pypi.org/project/geojson-rewind/1.0.2/) - 2021-10-17
 
 * Test on python 3.10
