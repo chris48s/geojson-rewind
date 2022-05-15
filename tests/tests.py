@@ -60,6 +60,11 @@ class RewindTests(unittest.TestCase):
         outfile = self.get_fixture_path("near_zero.output.geojson")
         self.assertDictEqual(rewind(json.load(open(infile))), json.load(open(outfile)))
 
+    def test_empty(self):
+        infile = self.get_fixture_path("empty.input.geojson")
+        outfile = self.get_fixture_path("empty.output.geojson")
+        self.assertDictEqual(rewind(json.load(open(infile))), json.load(open(outfile)))
+
     def test_str(self):
         # should convert str -> str
         infile = self.get_fixture_path("passthrough.input.geojson")
