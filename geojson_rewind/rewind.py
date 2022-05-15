@@ -2,10 +2,7 @@ import argparse
 import copy
 import json
 import logging
-import math
 import sys
-
-RADIUS = 6378137
 
 
 def rewind(geojson, rfc7946=True):
@@ -49,66 +46,65 @@ def _rewind(gj, rfc7946):
 
 def correct(feature, rfc7946):
     if feature["type"] == "Polygon":
-        feature["coordinates"] = correctRings(feature["coordinates"], rfc7946)
+        feature["coordinates"] = rewindRings(feature["coordinates"], rfc7946)
     if feature["type"] == "MultiPolygon":
         feature["coordinates"] = list(
-            map(lambda obj: correctRings(obj, rfc7946), feature["coordinates"])
+            map(lambda obj: rewindRings(obj, rfc7946), feature["coordinates"])
         )
     return feature
 
 
-def correctRings(rings, rfc7946):
+def rewindRings(rings, rfc7946):
+    if len(rings) == 0:
+        return rings
+
     # change from rfc7946: True/False to clockwise: True/False here
     # RFC 7946 ordering determines how we deal with an entire polygon
     # but at this point we are switching to deal with individual rings
     # (which in isolation are just clockwise or anti-clockwise)
     clockwise = not (bool(rfc7946))
-    rings[0] = wind(rings[0], clockwise)
+
+    rings[0] = rewindRing(rings[0], clockwise)
     for i in range(1, len(rings)):
-        rings[i] = wind(rings[i], not (clockwise))
+        rings[i] = rewindRing(rings[i], not (clockwise))
     return rings
 
 
-def wind(ring, clockwise):
-    if is_clockwise(ring) == clockwise:
-        return ring
-    return ring[::-1]
+def kahan_add(a, b, err):
+    if abs(a) >= abs(b):
+        err += a - (a + b) + b
+    else:
+        err += b - (a + b) + a
+    return a + b, err
 
 
-def is_clockwise(ring):
-    return ringArea(ring) >= 0
-
-
-def ringArea(coords):
+def rewindRing(ring, clockwise):
+    """
+    Two things to note here:
+    1. This isn't an accurate area calculation. We only care whether the value
+       is positive or negative so a (faster to calculate) approximation will do.
+       Refs https://github.com/mapbox/geojson-rewind/pull/28
+    2. We use Kahan-Babuska summation to minimise error when dealing with
+       very small polygons.
+       Refs https://github.com/mapbox/geojson-rewind/pull/32
+    """
     area = 0
-    coordsLength = len(coords)
+    error = 0
+    i = 0
+    length = len(ring)
+    j = length - 1
 
-    if coordsLength > 2:
-        for i in range(0, coordsLength):
-            if i == coordsLength - 2:
-                lowerIndex = coordsLength - 2
-                middleIndex = coordsLength - 1
-                upperIndex = 0
-            elif i == coordsLength - 1:
-                lowerIndex = coordsLength - 1
-                middleIndex = 0
-                upperIndex = 1
-            else:
-                lowerIndex = i
-                middleIndex = i + 1
-                upperIndex = i + 2
-            p1 = coords[lowerIndex]
-            p2 = coords[middleIndex]
-            p3 = coords[upperIndex]
-            area = area + (rad(p3[0]) - rad(p1[0])) * math.sin(rad(p2[1]))
+    while i < length:
+        area, error = kahan_add(
+            area, (ring[i][0] - ring[j][0]) * (ring[j][1] + ring[i][1]), error
+        )
+        j = i
+        i += 1
 
-        area = area * RADIUS * RADIUS / 2
+    if (area + error >= 0) != clockwise:
+        return ring[::-1]
 
-    return area
-
-
-def rad(coord):
-    return coord * math.pi / 180
+    return ring
 
 
 def main():
