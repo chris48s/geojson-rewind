@@ -70,7 +70,7 @@ class RewindTests(unittest.TestCase):
         self.assertNotEqual(_input, output)
 
     def test_unexpected_crs_warning(self):
-        infile = self.get_fixture_path("point-other-crs.input.geojson")
+        infile = self.get_fixture_path("point_other_crs.input.geojson")
         _input = json.load(open(infile))
 
         with io.StringIO() as buf, redirect_stderr(buf):
@@ -80,14 +80,14 @@ class RewindTests(unittest.TestCase):
             )
 
     def test_crs84_no_warning(self):
-        infile = self.get_fixture_path("point-crs84.input.geojson")
+        infile = self.get_fixture_path("point_crs84.input.geojson")
         _input = json.load(open(infile))
         with io.StringIO() as buf, redirect_stderr(buf):
             rewind(_input)
             self.assertEqual("", buf.getvalue())
 
     def test_no_crs_no_warning(self):
-        infile = self.get_fixture_path("point-no-crs.input.geojson")
+        infile = self.get_fixture_path("point_no_crs.input.geojson")
         _input = json.load(open(infile))
         with io.StringIO() as buf, redirect_stderr(buf):
             rewind(_input)
