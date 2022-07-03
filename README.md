@@ -1,6 +1,6 @@
 # geojson-rewind
 
-![Run tests](https://github.com/chris48s/geojson-rewind/workflows/Run%20tests/badge.svg?branch=master)
+[![Run tests](https://github.com/chris48s/geojson-rewind/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/chris48s/geojson-rewind/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/chris48s/geojson-rewind/branch/master/graph/badge.svg?token=0WGM3W8ULH)](https://codecov.io/gh/chris48s/geojson-rewind)
 ![PyPI Version](https://img.shields.io/pypi/v/geojson-rewind.svg)
 ![License](https://img.shields.io/pypi/l/geojson-rewind.svg)
