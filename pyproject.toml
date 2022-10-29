@@ -9,13 +9,13 @@ repository = "https://github.com/chris48s/geojson-rewind"
 homepage = "https://github.com/chris48s/geojson-rewind"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-coverage = "^6.2"
-isort = { version = "^5.10", python = "^3.6.2" }
+coverage = "^6.4"
+isort = "^5.10"
 flake8 = "^4.0.1"
-black = { version = "==22.8.0", python = "^3.6.2" }
+black = "==22.8.0"
 
 [build-system]
 requires = ["poetry>=1.0.2"]
