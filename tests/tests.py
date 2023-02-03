@@ -10,7 +10,6 @@ from geojson_rewind.rewind import main
 
 
 class RewindTests(unittest.TestCase):
-
     maxDiff = None
 
     def get_fixture_path(self, filename):
