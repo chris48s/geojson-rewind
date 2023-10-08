@@ -85,6 +85,15 @@ $ rewind in.geojson > out.geojson
 $ curl "https://myserver.com/in.geojson" | rewind
 ```
 
+## Versioning
+
+geojson-rewind follows [semantic versioning](https://semver.org/). For this project, the "API" also includes:
+
+- CLI flags and options
+- CLI exit codes
+
+In line with common practice in the python community, geojson-rewind will drop compatibility with unsupported python versions without incrementing the major version.
+
 ## Acknowledgements
 
 `geojson-rewind` is a python port of Mapbox's javascript [geojson-rewind](https://github.com/mapbox/geojson-rewind) package. Credit to [Tom MacWright](https://github.com/tmcw) and [contributors](https://github.com/mapbox/geojson-rewind/graphs/contributors).
