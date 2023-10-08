@@ -1,5 +1,11 @@
 # Changelog
 
+## 📦 [1.1.0](https://pypi.org/project/geojson-rewind/1.1.0/) - 2023-10-08
+
+* Drop python 3.6, 3.7
+* Convert python requirement to open range
+* Tested on python 3.11, 3.12
+
 ## 📦 [1.0.3](https://pypi.org/project/geojson-rewind/1.0.3/) - 2022-05-15
 
 * Performance improvements
