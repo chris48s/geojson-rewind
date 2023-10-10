@@ -12,7 +12,7 @@ homepage = "https://github.com/chris48s/geojson-rewind"
 python = ">=3.8"
 
 [tool.poetry.dev-dependencies]
-coverage = "^7.2"
+coverage = "^7.3"
 isort = "^5.12"
 flake8 = { version = "^6.1.0", python = "^3.8.1" }
 black = "==23.9.1"
