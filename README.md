@@ -3,6 +3,7 @@
 [![Run tests](https://github.com/chris48s/geojson-rewind/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/chris48s/geojson-rewind/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/chris48s/geojson-rewind/branch/master/graph/badge.svg?token=0WGM3W8ULH)](https://codecov.io/gh/chris48s/geojson-rewind)
 ![PyPI Version](https://img.shields.io/pypi/v/geojson-rewind.svg)
+[![Network Dependents](https://dependents.info/chris48s/geojson-rewind/badge)](https://dependents.info/chris48s/geojson-rewind)
 ![License](https://img.shields.io/pypi/l/geojson-rewind.svg)
 ![Python Compatibility](https://img.shields.io/badge/dynamic/json?query=info.requires_python&label=python&url=https%3A%2F%2Fpypi.org%2Fpypi%2Fgeojson-rewind%2Fjson)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
@@ -16,6 +17,12 @@ The [GeoJSON](https://tools.ietf.org/html/rfc7946) spec mandates the [right hand
 This helps you generate compliant Polygon and MultiPolygon geometries.
 
 Note: Co-ordinates in the input data are assumed to be WGS84 with (lon, lat) ordering, [as per RFC 7946](https://tools.ietf.org/html/rfc7946#section-3.1.1). Input with co-ordinates using any other CRS may lead to unexpected results.
+
+## Used by
+
+<a href="https://dependents.info/chris48s/geojson-rewind">
+  <img src="https://dependents.info/chris48s/geojson-rewind/image" />
+</a>
 
 ## Installation
 
