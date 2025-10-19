@@ -10,7 +10,7 @@ requires-python = ">=3.10"
 [tool.poetry.group.dev.dependencies]
 coverage = "7.6.1"
 isort = "5.13.2"
-flake8 = "7.1.2"
+flake8 = "7.3.0"
 black = "24.8.0"
 
 [project.urls]
