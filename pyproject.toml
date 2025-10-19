@@ -1,25 +1,28 @@
-[tool.poetry]
+[project]
 name = "geojson-rewind"
 version = "1.1.0"
 description = "A Python library for enforcing polygon ring winding order in GeoJSON"
-authors = ["chris48s"]
+authors = [{name = "chris48s"}]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/chris48s/geojson-rewind"
-homepage = "https://github.com/chris48s/geojson-rewind"
+requires-python = ">=3.10"
 
-[tool.poetry.dependencies]
-python = ">=3.8"
+[tool.poetry.group.dev.dependencies]
+coverage = "7.6.1"
+isort = "5.13.2"
+flake8 = "7.1.2"
+black = "24.8.0"
 
-[tool.poetry.dev-dependencies]
-coverage = "^7.6"
-isort = "^5.13"
-flake8 = { version = "^7.1.2", python = "^3.8.1" }
-black = "==24.8.0"
+[project.urls]
+Home = "https://github.com/chris48s/geojson-rewind"
+Source = "https://github.com/chris48s/geojson-rewind"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
 
 [build-system]
-requires = ["poetry>=1.0.2"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.masonry.api"
 
-[tool.poetry.scripts]
+[project.scripts]
 rewind = 'geojson_rewind.rewind:main'
