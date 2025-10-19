@@ -1,5 +1,10 @@
 # Changelog
 
+## 📦 [1.2.0](https://pypi.org/project/geojson-rewind/1.2.0/) - 2025-10-19
+
+* Drop python 3.8, 3.9
+* Tested on python 3.13, 3.14
+
 ## 📦 [1.1.0](https://pypi.org/project/geojson-rewind/1.1.0/) - 2023-10-08
 
 * Drop python 3.6, 3.7
