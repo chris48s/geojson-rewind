@@ -1,5 +1,9 @@
 # Changelog
 
+## 📦 [1.2.1](https://pypi.org/project/geojson-rewind/1.2.1/) - 2025-10-22
+
+* Fix build build-backend declaration
+
 ## 📦 [1.2.0](https://pypi.org/project/geojson-rewind/1.2.0/) - 2025-10-19
 
 * Drop python 3.8, 3.9

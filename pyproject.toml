@@ -1,6 +1,6 @@
 [project]
 name = "geojson-rewind"
-version = "1.2.0"
+version = "1.2.1"
 description = "A Python library for enforcing polygon ring winding order in GeoJSON"
 authors = [{name = "chris48s"}]
 license = "MIT"
